@@ -1,0 +1,40 @@
+What is Recusion?
+Functions calling itself.
+
+Solve with smaller instances of that problem.
+Like, sum(1 - n) = 1 + 2 + 3 + 4 + .... + n
+can also be done as,
+sum(1 - n) = sum(1 - n-1) + n
+sum(4) = sum(3) + 4
+
+
+How to write Recursive Code?
+
+Assumptions: Define what the problem does.
+
+Main Logic: Solve your assumption using sub-problems.
+
+Base Condition: Where you have to stop.
+
+sum(5) = sum(4) + 5
+sum(4) = sum(3) + 4
+sum(3) = sum(2) + 3
+sum(2) = sum(1) + 2
+sum(1) = sum(0) + 1
+sum(0) = sum(-1) + 0  This is wrong
+
+int sum(n){
+  if(n=1){ return 1; }
+  return sum = sum(n-1) + n;
+}
+
+
+Time complexity and space complexity of recursive codes.
+
+Why Recursion?
+- Merge Sort , Quick sort
+- Binary Tree, BST, Segment Trees, Tries
+- Dynamic Programming
+- Backtracking 
+- Graphs
+
