@@ -177,5 +177,67 @@ public class GFG{
 }
 
 // Approach 5: Maximum and Minimum of an array by compairing in pairs
+// The ides is that when n is odd then initialize min and max as the first element.
+// If n is even then initialize min and max as the minimum and maximum of the first two elements respectively.
+// For the rest of the elements, pick them in pairs and compare their maximum and minimum with max and min respectively.
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 
+import java.io.*;
+import java.util.*;
+
+public class GFG{
+  static class Pair{
+    int min;
+    int max;
+  }
+  static Pair getMinMax(int arr[], int n){
+    Pair minmax = new Pair();
+    int i;
+
+    if(n % 2 == 0){
+      if(arr[0] > arr[1]){
+        minmax.min = arr[1];
+        minmax.max = arr[0];
+      }else{
+        minmax.min = arr[0];
+        minmax.max = arr[1];
+      }
+      i = 2;
+    }else{
+      minmax.min = arr[0];
+        minmax.max = arr[0];
+       i = 1;
+    }
+
+    while(i < n-1){
+      if(arr[i] > arr[i+1]){
+        if(arr[i] > minmax.max){
+          minmax.max = arr[i];
+        }
+         if(arr[i+1] > minmax.min){
+          minmax.min = arr[i + 1];
+        }
+      }else{
+        if(arr[i+1] > minmax.max){
+          minmax.max = arr[i+1];
+        }
+         if(arr[i] > minmax.min){
+          minmax.min = arr[i];
+        }
+      }
+      i += 2;
+    }
+   return minmax;
+  }
+
+  // Driver Code
+  public static void main(String args[]){
+    int arr[] = {1000, 11, 445, 1, 330, 3000};
+    int n = arr.length;
+    Pair min = getMinMax(arr, n);
+    System.out.print("Mininmum element is" + minmax.min);
+    System.out.println("Maximum element is" + minmax.max);
+  }
+}
 
