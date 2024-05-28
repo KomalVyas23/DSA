@@ -67,3 +67,115 @@ class Main{
   }
 }
 
+// Approach 3: Using Linear Search
+//Initialize min and max as the minimum and maximum of the first two elements respectively. Starting from 3rd element,
+//keep on comparing each element with min and max, and change max and min accordingly(i.e., if the element is smaller than min, then change min.
+//If the element is greater than max, than change max. Or else ignore the element.)
+//TC: O(n) SC: O(1)
+
+import java.io.*;
+import java.util.*;
+
+public class GFG{
+  static class Pair{
+    int min,max;
+  }
+  static Pair getMinMax(int arr[], int n){
+    Pair minmax = new Pair();
+    int i;
+
+    //If there is only one element
+    if(n == 1){
+      minmax.min = arr[0];
+      minmax.max = arr[0];
+      return minmax;
+    }
+
+    //If there are more than 1 element then initialize min and max
+    if(arr[0]> arr[1]){
+      minmax.max = arr[0];
+      minmax.min = arr[1];
+    }else{
+      minmax.max = arr[1];
+      minmax.min = arr[0];
+    }
+
+    for(i = 2; i < n; i++){
+      if(arr[i] > minmax.max){
+        minmax.max = arr[i];
+      }else if(arr[i] < minmax.min){
+        minmax.min = arr[i];
+      }
+    }
+    return minmax;
+  }
+
+  //Driver Code
+  public static void main(String args[]){
+    int arr[] = {1000, 11, 445,1, 330,3000};
+    int arr_size = 6;
+    Pair minmax = getMinMax(arr, arr_size);
+    System.out.print("Minimum element is" + minmax.min);
+    System.out.println("Maximum element is" + minmax.max);
+  }
+}
+
+// Approach 4: Minimum and Maximum using Tournament Method
+// The idea is to divide the array into two parts and compare the maximum and minimum
+//of the two parts to get the minimum and maximum of the the whole array.
+//TC: O(n)
+//SC: O(log n)
+
+public class GFG{
+  static class Pair{
+    int min;
+    int max;
+  }
+
+  static Pair getMinMax(int arr[], int low, int high){
+    Pair minmax = new Pair();
+    Pair mml = new Pair();
+    Pair mmr = new Pair();
+    int mid;
+
+    // If there is only 1 element
+    if(low == high){
+      minmax.min = arr[low];
+      minmax.max = arr[low];
+      return minmax;
+    }
+
+    //If there are 2 elements
+    mid = (low + high)/2;
+    mml = getMinMax(arr, low, mid);
+    mmr = getMinMax(arr, mid+1, high);
+
+    //Compair minimums of two parts
+    if(mml.min < mmr.min){
+      minmax.min = mml.min;
+    }else{
+      minmax.min = mmr.min;
+    }
+
+    //Compair maximum of two parts
+    if(mml.max < mmr.max){
+      minmax.max = mml.max;
+    }else{
+      minmax.max = mmr.max;
+    }
+    return minmax;
+  }
+
+  // Driver Code
+  public static void main(String args[]){
+    int arr[] = {1000, 11, 445, 1, 330, 3000};
+    int n = arr.length;
+    Pair minmax = getMinMax(arr, 0, n-1);
+    System.out.print("Minimum number is" + minmax.min);
+    System.out.println("Maximum number is" + minmax.max);
+  }
+}
+
+// Approach 5: Maximum and Minimum of an array by compairing in pairs
+
+
