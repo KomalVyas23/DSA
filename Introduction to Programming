@@ -1,0 +1,46 @@
+Introduction to JS Programming:
+
+Variables
+Mathematical Operations
+Arrays
+Objects
+
+// const a = 10;
+// const b = 20;
+// const sum = a + b;
+// const difference = a - b;
+// console.log(sum);
+// console.log(difference);
+
+// Value of let can be changed later
+// let x = 10;
+// console.log(x);
+// x = 30;
+// console.log(x);
+
+// let firstName = "Komal";
+// let lastName = "Vyas";
+// let fullName = firstName + " " + lastName;
+// let num1 = 7;
+// console.log(fullName);
+// console.log(firstName + " " + num1);
+// console.log(firstName + num1);
+
+// In above case JS first convert num1 into a string and then concatenate both
+
+//Arrays - uses indexes
+// let arr = [2, 6, 0, 100, 9, 27];
+// for (let i = arr.length; i >= 0; i--){
+//     console.log(arr[i])
+// }
+
+//Objects - stores in key value pair
+// let obj = {
+//     a: 7,
+//     name: "Komal",
+//     book: true,
+//     arr: [6, 7, 8]
+// }
+
+// console.log(obj.a + " " + obj.name);
+
